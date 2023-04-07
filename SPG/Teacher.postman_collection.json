@@ -1,0 +1,296 @@
+{
+	"info": {
+		"_postman_id": "2c7c478c-dbc5-4183-99ca-bd8df147ca98",
+		"name": "Teacher",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Assitant",
+			"item": [
+				{
+					"name": "ADD TA",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"course_instructor\":1,\r\n    \"course\":1,\r\n    \"native_english_speaker\":1,\r\n    \"semester\":1,\r\n    \"class_size\":23,\r\n    \"performance_score\":2\r\n\r\n\r\n\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/assitant/",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"assitant",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get TA using ta id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{localhost}}/assitant/?ta_id=91bd2473-50e8-483f-bf39-bef0ddad773a",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"assitant",
+								""
+							],
+							"query": [
+								{
+									"key": "ta_id",
+									"value": "91bd2473-50e8-483f-bf39-bef0ddad773a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete TA",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{localhost}}/assitant/?ta_id=91bd2473-50e8-483f-bf39-bef0ddad773a",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"assitant",
+								""
+							],
+							"query": [
+								{
+									"key": "ta_id",
+									"value": "91bd2473-50e8-483f-bf39-bef0ddad773a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update TA",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"course_instructor\":2,\r\n    \"course\":1,\r\n    \"native_english_speaker\":1,\r\n    \"semester\":1,\r\n    \"class_size\":23,\r\n    \"performance_score\":2\r\n\r\n\r\n\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/assitant/",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"assitant",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login Api",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"access_token\", jsonData.access);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"satyam@gmail.com\",\r\n    \"password\":\"Satyam@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}/api/token/",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"api",
+						"token",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Acess Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\":\"{{access_token}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}/api/token/verify/",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"api",
+						"token",
+						"verify",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register User",
+			"request": {
+				"auth": {
+					"type": "apikey"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"satyam@gmail.com\",\r\n    \"password\":\"Satyam@123\",\r\n    \"first_name\":\"Satyam\",\r\n    \"last_name\":\"Urkude\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}/user/",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}/user/",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "localhost",
+			"value": "http://localhost:8000",
+			"type": "default"
+		}
+	]
+}
