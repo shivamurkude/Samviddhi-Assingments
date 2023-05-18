@@ -11,12 +11,7 @@ class TAView(APIView):
         try: 
             data=request.data
             
-            if int(data['course_instructor'])>25 or int(data['course_instructor'])<0:
-                return Response({'message':'invalid course instructor'})
-            
-            
-            if int(data['course'])>26 or int(data['course'])<0:
-                return Response({'message':'invalid course '})
+           
         
             ser=TAserializer(data=data)
             if ser.is_valid():
