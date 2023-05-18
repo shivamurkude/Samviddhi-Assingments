@@ -10,9 +10,8 @@ class TAView(APIView):
     def post(self,request):
         try: 
             data=request.data
-            
-           
-        
+            data["created_by"]=request.user.id
+
             ser=TAserializer(data=data)
             if ser.is_valid():
                
